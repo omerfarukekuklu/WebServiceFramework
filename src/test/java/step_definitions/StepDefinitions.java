@@ -18,7 +18,7 @@ public class StepDefinitions extends Utils {
     ResponseSpecification responseSpecification;
     Response response;
     PayloadManager payloadManager = new PayloadManager();
-    private static String place_id;
+    static String place_id;
 
     @Given("Add Place Payload with {string}  {string}  {string}")
     public void add_place_payload_with(String name, String language, String address) {

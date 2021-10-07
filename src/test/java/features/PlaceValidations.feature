@@ -1,6 +1,6 @@
 #language: en
 Feature: Place API Tests
-
+  @AddPlace @Regression
   Scenario Outline: Verify if place is successfully added using AppPlaceAPI
     Given Add Place Payload with "<name>"  "<language>"  "<address>"
     When user calls "AddPlaceAPI" with "Post" http request
@@ -9,12 +9,13 @@ Feature: Place API Tests
     And  "scope" in response body is "APP"
     And verify place_id created maps to "<name>" using "GetPlaceAPI"
 
-  Examples:
-    |name    |language  |address           |
-    |A house |English   |World cross center|
+    Examples:
+      |name    |language  |address           |
+      |A house |English   |World cross center|
  #   |B house |Spanish   |Sea cross center  |
  #   |C house |Danish    |Land cross center |
 
+  @DeletePlace @Regression
   Scenario: Verify if Delete Place functionality is working
 
     Given DeletePlace Payload
