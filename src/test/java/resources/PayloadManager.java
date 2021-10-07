@@ -6,7 +6,7 @@ import pojo_classes.Location;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TestDataBuild {
+public class PayloadManager {
     public AddPlace getAddPlacePayload(String name, String language, String address){
         AddPlace p =new AddPlace();
         p.setAccuracy(50);
@@ -26,5 +26,10 @@ public class TestDataBuild {
         p.setLocation(l);
 
         return p;
+    }
+
+    public String getDeletePlacePayload(String placeId)
+    {
+        return "{\r\n    \"place_id\":\""+placeId+"\"\r\n}";
     }
 }
