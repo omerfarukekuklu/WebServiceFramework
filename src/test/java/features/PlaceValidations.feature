@@ -10,3 +10,5 @@ Feature: Place API Tests
   Examples:
     |name    |language  |address           |
     |A house |English   |World cross center|
+    |B house |Spanish   |Sea cross center  |
+    |C house |Danish    |Land cross center |

@@ -12,19 +12,21 @@ import java.io.PrintStream;
 import java.util.Properties;
 
 public class Utils {
-    RequestSpecification requestSpecification;
+    private static RequestSpecification requestSpecification;
     public RequestSpecification requestSpecification(){
-        PrintStream log= null;
-        try{
-            log = new PrintStream(new FileOutputStream("logs/logging.txt"));
+        if(requestSpecification == null){
+            PrintStream log= null;
+            try{
+                log = new PrintStream(new FileOutputStream("logs/logging.txt"));
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
+            requestSpecification =new RequestSpecBuilder().setBaseUri(getGlobalValues("baseUrl")).addQueryParam("key", "qaclick123")
+                    .addFilter(RequestLoggingFilter.logRequestTo(log))
+                    .addFilter(ResponseLoggingFilter.logResponseTo(log))
+                    .setContentType(ContentType.JSON).build();
         }
-        catch (Exception e){
-            e.printStackTrace();
-        }
-        requestSpecification =new RequestSpecBuilder().setBaseUri(getGlobalValues("baseUrl")).addQueryParam("key", "qaclick123")
-                .addFilter(RequestLoggingFilter.logRequestTo(log))
-                .addFilter(ResponseLoggingFilter.logResponseTo(log))
-                .setContentType(ContentType.JSON).build();
         return requestSpecification;
     }
 
