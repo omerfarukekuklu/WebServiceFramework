@@ -16,7 +16,7 @@ public class Utils {
     public RequestSpecification requestSpecification(){
         PrintStream log= null;
         try{
-            log = new PrintStream(new FileOutputStream("logging.txt"));
+            log = new PrintStream(new FileOutputStream("logs/logging.txt"));
         }
         catch (Exception e){
             e.printStackTrace();
